@@ -1,0 +1,15 @@
+{
+  "name": "css-sass-flex_grid",
+  "version": "1.0.0",
+  "description": "MyNatours",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Reissa Alderman",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  }
+}
