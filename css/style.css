@@ -110,7 +110,7 @@ Treated as a child of the button. Animation on original state. */
   margin-bottom: 6rem;
   text-transform: uppercase; }
 
-.ph--main {
+.primary-heading--main {
   animation: moveInLeft 1s ease-out;
   /* animation-name: moveInLeft; /* Name from keyframes animation called moveInLeft. */
   /* animation-delay: 1s; 
@@ -122,7 +122,7 @@ Treated as a child of the button. Animation on original state. */
   font-weight: 400;
   letter-spacing: 3.5rem; }
 
-.ph--sub {
+.primary-heading--sub {
   animation: moveInRight 1s ease-out;
   display: block;
   font-size: 2rem;

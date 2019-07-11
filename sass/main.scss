@@ -2,8 +2,11 @@ $color-primary: #55c57a;
 $color-primary-dark: #28b485;
 $color-primary-light: #7ed56f;
 $color-grey: #777;
+$color-dark-grey: rgb(20, 19, 19);
 $color-white: #fff;
-/******************** Reset HTML - Sort of boilerplate ********************/
+$color-black: #000;
+/********************** Reset HTML - Sort of boilerplate ********************/
+
 /* 10px equals 1rem*/
 *,
 *::before,
@@ -17,62 +20,65 @@ html {
 }
 body {
     box-sizing: border-box;
-    color: rgb(20, 19, 19);
+    color: $color-dark-grey;
     font-family: "Lato", Arial, sans-serif;
     font-weight: 400;
     line-height: 1.7;
     padding: 3rem;
 }
 /******************** REUSABLE ********************/
-.btn:link,
-.btn:visited {
-    border-radius: 5rem;
-    display: inline-block; /* Should use to give an element some height and/or padding. */
-    font-size: 1.6rem;
-    padding: 1.5rem 4rem;
-    position: relative; /* Handles the pseudobutton parent element position. */
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all .2s; /* Must be on the inital state, here, to use for :hover/:active */
+.btn {
+    &:link,
+    &:visited {
+        border-radius: 5rem;
+        display: inline-block; /* Should use to give an element some height and/or padding. */
+        font-size: 1.6rem;
+        padding: 1.5rem 4rem;
+        position: relative; /* Handles the pseudobutton parent element position. */
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all .2s; /* Must be on the inital state, here, to use for :hover/:active */
+    }
+    &:hover {
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        transform: translateY(-3px);
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        transform: translateY(-1px);
+    }
+    /* Serves as virtual element after (::after) selected element (.btn) that can be styled 
+    Here, we add an element that looks like the button, but bigger, then hides - creates the effect. 
+    Treated as a child of the button. Animation on original state. */
+    &::after {
+        border-radius: 5rem;
+        content: ""; /* REQUIRED OR IT WILL NOT APPEAR */
+        display: inline-block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transition: all .4s;
+        width: 100%;
+        z-index: -1; /* Hides pseudo behind the button. */
+    }
+    &--white {
+        background-color: $color-white;
+        color: $color-grey;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards; /* Automatically apply styles of 0% before animation starts. */
+    }
 }
-.btn:hover {
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-    transform: translateY(-3px);
-}
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-.btn:active {
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-    transform: translateY(-1px);
-}
-/* Serves as virtual element after (::after) selected element (.btn) that can be styled 
-Here, we add an element that looks like the button, but bigger, then hides - creates the effect. 
-Treated as a child of the button. Animation on original state. */
-.btn::after {
-    border-radius: 5rem;
-    content: ""; /* REQUIRED OR IT WILL NOT APPEAR */
-    display: inline-block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transition: all .4s;
-    width: 100%;
-    z-index: -1; /* Hides pseudo behind the button. */
-}
-.btn--white {
-    background-color: $color-white;
-    color: $color-grey;
-}
-.btn--white::after {
-    background-color: $color-white;
-}
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards; /* Automatically apply styles of 0% before animation starts. */
-}
+
 /******************** Header ********************/
 .header {
     background-image: linear-gradient(
@@ -84,48 +90,53 @@ Treated as a child of the button. Animation on original state. */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     height: 95vh;
     position: relative; /* Required for the position: absolute in the child element. */
-}
-.header__logo-box {
-    left: 4rem;
-    position: absolute; /* Parent element, .header, must have position: relative as reference for this. */
-    top: 4rem;
-}
-.header__logo {
-    height: 3.5rem;
-}
-.header__text-box {
-    backface-visibility: hidden; /* Prevents "shaking" when animates. */
-    left: 50%;
-    position: absolute;
-    text-align: center; 
-    top: 40%;
-    transform: translate(-50%, -50%); /* No longer in relation of the parent element, but of the element itself. */
+    /* The ampersand (&) selects the parent selector, which is .header */
+    &__logo-box {
+        left: 4rem;
+        position: absolute; /* Parent element, .header, must have position: relative as reference for this. */
+        top: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        backface-visibility: hidden; /* Prevents "shaking" when animates. */
+        left: 50%;
+        position: absolute;
+        text-align: center; 
+        top: 40%;
+        transform: translate(-50%, -50%); /* No longer in relation of the parent element, but of the element itself. */
+    }
 }
 .primary-heading {
     backface-visibility: hidden; /* Prevents "shaking" when the heading text animates. */
     color: $color-white;
     margin-bottom: 6rem;
     text-transform: uppercase;
+
+    &--main {
+        animation: moveInLeft 1s ease-out;
+        /* animation-name: moveInLeft; /* Name from keyframes animation called moveInLeft. */
+        /* animation-delay: 1s; 
+        animation-duration: 1s;
+        animation-iteration-count: 2; 
+        animation-timing-function: ease-out; */
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    }
+    &--sub {
+        animation: moveInRight 1s ease-out;
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+    }
 }
-.ph--main {
-    animation: moveInLeft 1s ease-out;
-    /* animation-name: moveInLeft; /* Name from keyframes animation called moveInLeft. */
-    /* animation-delay: 1s; 
-    animation-duration: 1s;
-    animation-iteration-count: 2; 
-    animation-timing-function: ease-out; */
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-}
-.ph--sub {
-    animation: moveInRight 1s ease-out;
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-}
+
 /* Handles the animation for the header elements. */ 
 @keyframes moveInLeft {
     /* Before the animation starts = 0% */
