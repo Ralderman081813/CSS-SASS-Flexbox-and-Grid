@@ -1,0 +1,51 @@
+.btn {
+    &:link,
+    &:visited {
+        border-radius: 5rem;
+        display: inline-block; /* Should use to give an element some height and/or padding. */
+        font-size: 1.6rem;
+        padding: 1.5rem 4rem;
+        position: relative; /* Handles the pseudobutton parent element position. */
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all .2s; /* Must be on the inital state, here, to use for :hover/:active */
+    }
+    &:hover {
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        transform: translateY(-3px);
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        transform: translateY(-1px);
+    }
+    /* Serves as virtual element after (::after) selected element (.btn) that can be styled 
+    Here, we add an element that looks like the button, but bigger, then hides - creates the effect. 
+    Treated as a child of the button. Animation on original state. */
+    &::after {
+        border-radius: 5rem;
+        content: ""; /* REQUIRED OR IT WILL NOT APPEAR */
+        display: inline-block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transition: all .4s;
+        width: 100%;
+        z-index: -1; /* Hides pseudo behind the button. */
+    }
+    &--white {
+        background-color: $color-white;
+        color: $color-grey;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode: backwards; /* Automatically apply styles of 0% before animation starts. */
+    }
+}
