@@ -11,9 +11,10 @@
 @import "components/button";
 /* Import layout .scss files */ 
 @import "layout/header";
+@import "layout/grid";
 /* Import pages .scss files */ 
 @import "pages/home";
-/* Import themes .scss files */ 
-@import "themes/..";
-/* Import vendors .scss files */ 
-@import "vendors/..";
+/* Import themes .scss files  
+@import "themes/..";*/
+/* Import vendors .scss files  
+@import "vendors/..";*/
