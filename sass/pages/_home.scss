@@ -1,0 +1,8 @@
+// h2 in <main> section. 
+.about-section {
+    background-color: $color-light-grey1;
+    /* To calc, look in _header.scss at height/clip values (lines 9-10). 
+     Find diff - 95vh - 75vh = 20vh. */
+    margin-top: -20vh; // Negative value makes the margin go higher than container.
+    padding: 25rem 0;
+}

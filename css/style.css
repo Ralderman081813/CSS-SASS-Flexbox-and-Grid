@@ -14,6 +14,8 @@ html {
 
 body {
   box-sizing: border-box; }
+  body main {
+    color: #777; }
 
 /* Handles the animation for the header elements. */
 @keyframes moveInLeft {
@@ -84,6 +86,28 @@ body {
     font-weight: 700;
     letter-spacing: 1.75rem; }
 
+.tertiary-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.utlty-cntr-txt {
+  text-align: center; }
+
+.utility-margin-bottom-sm {
+  margin-bottom: 1.5rem; }
+
+.utility-margin-bottom-md {
+  margin-bottom: 4rem; }
+
+.utility-margin-bottom-lg {
+  margin-bottom: 8rem; }
+
 /* Import component .scss files */
 .btn {
   /* Serves as virtual element after (::after) selected element (.btn) that can be styled 
@@ -133,6 +157,52 @@ body {
     animation-fill-mode: backwards;
     /* Automatically apply styles of 0% before animation starts. */ }
 
+.button-text:link, .button-text:visited {
+  border-bottom: 1px solid #55c57a;
+  color: #55c57a;
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 3px;
+  text-decoration: none;
+  transition: all .2s; }
+
+.button-text:hover {
+  background-color: #55c57a;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  color: #fff;
+  transform: translateY(-2px); }
+
+.button-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.composition {
+  position: relative; }
+  .composition__img {
+    border-radius: 2px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    outline-offset: 2rem;
+    position: absolute;
+    transition: all .2s;
+    width: 55%;
+    z-index: 10; }
+    .composition__img--img1 {
+      left: 0;
+      top: -2rem; }
+    .composition__img--img2 {
+      right: 0;
+      top: 2rem; }
+    .composition__img--img3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__img:hover {
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      z-index: 20; }
+  .composition:hover .composition__img:not(:hover) {
+    transform: scale(0.95); }
+
 /* Import layout .scss files */
 /******************** Header ********************/
 .header {
@@ -161,8 +231,21 @@ body {
     transform: translate(-50%, -50%);
     /* No longer in relation of the parent element, but of the element itself. */ }
 
+.secondary-header {
+  background-image: linear-gradient(to left, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8));
+  color: transparent;
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all .2s;
+  -webkit-background-clip: text; }
+  .secondary-header:hover {
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    transform: skewY(2deg) skewX(15deg) scale(1.1); }
+
 .row {
-  background-color: #ccc;
   margin: 0 auto;
   max-width: 114rem;
   /* Attribute selector: Use square brackets [ ]. The ^ denotes 'starts with', * denotes 
@@ -188,12 +271,18 @@ body {
     display: table;
     clear: both; }
   .row [class^="col-"] {
-    float: left;
-    background-color: yellow; }
+    float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
 
 /* Import pages .scss files */
+.about-section {
+  background-color: #f7f7f7;
+  /* To calc, look in _header.scss at height/clip values (lines 9-10). 
+     Find diff - 95vh - 75vh = 20vh. */
+  margin-top: -20vh;
+  padding: 25rem 0; }
+
 /* Import themes .scss files  
 @import "themes/..";*/
 /* Import vendors .scss files  
