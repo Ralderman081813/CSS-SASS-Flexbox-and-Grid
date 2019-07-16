@@ -1,0 +1,36 @@
+.composition {
+    position: relative;  // Required for position: absolute; below.
+    &__img {
+        border-radius: 2px; 
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        // Positioned in reference to the first parent encountered. Effects all images.
+        outline-offset: 2rem; // Used with outline from &:hover below. Gives space (outline) between the outlin and element.
+        position: absolute; 
+        transition: all .2s;
+        width: 55%;
+        z-index: 10;
+        &--img1 {
+            left: 0;
+            top: -2rem;
+        }
+        &--img2 {
+            right: 0;
+            top: 2rem;
+        }
+        &--img3 {
+            left: 20%;
+            top: 10rem;
+        }
+        &:hover {
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            outline: 1.5rem solid $color-primary; // Similar to setting a border. Uses outline offset.
+            transform: scale(1.05) translateY(-.5rem);
+            z-index: 20;
+        }
+    }
+    // Selector that targets the images and makes them scale bigger. 
+    // When composition element is hovered and an image in it NOT hovered.
+    &:hover &__img:not(:hover) {
+        transform: scale(.95);
+    }
+}

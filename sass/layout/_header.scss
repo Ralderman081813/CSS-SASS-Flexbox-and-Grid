@@ -27,3 +27,20 @@
         transform: translate(-50%, -50%); /* No longer in relation of the parent element, but of the element itself. */
     }
 }
+.secondary-header {
+    background-image: linear-gradient(to left,
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8));
+    color: transparent;
+    display: inline-block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all .2s;
+    -webkit-background-clip: text; 
+    &:hover {
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+    }
+}

@@ -1,5 +1,4 @@
 .row {
-    background-color: #ccc;
     margin: 0 auto; // Centers a block element inside of another block element.  
     max-width: $grid-width; // If smaller than 114rem, take up 100% of VP.
     // Everything except the last child.
@@ -38,7 +37,6 @@
     class/id assigned to them. */
     [class^="col-"] {
         float: left;
-        background-color: yellow;
         &:not(:last-child) {
             margin-right: $gutter-horiz;
         }
