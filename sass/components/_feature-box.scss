@@ -7,11 +7,11 @@
     text-align: center;
     transition: transform .3s;
     & .fa-4x {
+        -webkit-background-clip: text; // Required for FA icon color change with gradient. 
+	    -webkit-text-fill-color: transparent; // Required for FA icon color change.
         background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
         display: inline-block;
         margin-bottom: 2rem;
-        -webkit-background-clip: text; // Required for FA icon color change with gradient. 
-	    -webkit-text-fill-color: transparent; // Required for FA icon color change.
     }
     &:hover {
         transform: translateY(-1.5rem) scale(1.03);
