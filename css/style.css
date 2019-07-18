@@ -62,35 +62,6 @@ body {
   line-height: 1.7;
   padding: 3rem; }
 
-.primary-heading {
-  backface-visibility: hidden;
-  /* Prevents "shaking" when the heading text animates. */
-  color: #fff;
-  margin-bottom: 6rem;
-  text-transform: uppercase; }
-  .primary-heading--main {
-    animation: moveInLeft 1s ease-out;
-    /* animation-name: moveInLeft; /* Name from keyframes animation called moveInLeft. */
-    /* animation-delay: 1s; 
-        animation-duration: 1s;
-        animation-iteration-count: 2; 
-        animation-timing-function: ease-out; */
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem; }
-  .primary-heading--sub {
-    animation: moveInRight 1s ease-out;
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem; }
-
-.tertiary-heading {
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-transform: uppercase; }
-
 .paragraph {
   font-size: 1.6rem; }
   .paragraph:not(:last-child) {
@@ -203,10 +174,27 @@ body {
   .composition:hover .composition__img:not(:hover) {
     transform: scale(0.95); }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  transition: transform .3s; }
+  .feature-box .fa-4x {
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    display: inline-block;
+    margin-bottom: 2rem;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
 /* Import layout .scss files */
 /******************** Header ********************/
 .header {
-  background-image: linear-gradient(rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-position: top;
   background-size: cover;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
@@ -231,8 +219,32 @@ body {
     transform: translate(-50%, -50%);
     /* No longer in relation of the parent element, but of the element itself. */ }
 
+.primary-heading {
+  backface-visibility: hidden;
+  /* Prevents "shaking" when the heading text animates. */
+  color: #fff;
+  margin-bottom: 6rem;
+  text-transform: uppercase; }
+  .primary-heading--main {
+    animation: moveInLeft 1s ease-out;
+    /* animation-name: moveInLeft; /* Name from keyframes animation called moveInLeft. */
+    /* animation-delay: 1s; 
+        animation-duration: 1s;
+        animation-iteration-count: 2; 
+        animation-timing-function: ease-out; */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem; }
+  .primary-heading--sub {
+    animation: moveInRight 1s ease-out;
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem; }
+
 .secondary-header {
-  background-image: linear-gradient(to left, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8));
+  background-image: linear-gradient(to left, #7ed56f, #28b485);
   color: transparent;
   display: inline-block;
   font-size: 3.5rem;
@@ -244,6 +256,11 @@ body {
   .secondary-header:hover {
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
     transform: skewY(2deg) skewX(15deg) scale(1.1); }
+
+.tertiary-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
 
 .row {
   margin: 0 auto;
@@ -282,6 +299,15 @@ body {
      Find diff - 95vh - 75vh = 20vh. */
   margin-top: -20vh;
   padding: 25rem 0; }
+
+.features-section {
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  margin-top: -11.5rem;
+  padding: 20rem 0;
+  transform: skewY(-7deg); }
+  .features-section > * {
+    transform: skewY(7deg); }
 
 /* Import themes .scss files  
 @import "themes/..";*/
