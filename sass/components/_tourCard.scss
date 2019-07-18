@@ -1,0 +1,114 @@
+.card {
+    height: 52rem;
+    // Adds persepective property to parent element to make card appear to come closer. 
+    perspective: 200rem; // The smaller the value, the crazier the effect. Bigger value == better results. 
+    -moz-perspective: 200rem; // Make perspective work in Firefox. 
+    position: relative;
+    &__side {
+        backface-visibility: hidden; // Hides the --back of the card prior to rotation.
+        background-color: $color-grey;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        font-size: 2rem;
+        height: 52rem;
+        left: 0;
+        position: absolute;
+        overflow: hidden; // Image is overflowing and blocking border-radius.
+        top: 0;
+        transition: all 1.25s ease;
+        width: 100%;
+        &--front {
+            background-color: $color-white;
+        }
+        &--back {
+            transform: rotateY(180deg);
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+        }
+    }
+    &:hover &__side--front { 
+        // Rotate on y-axis half a full rotation; 180deg.
+        transform: rotateY(-180deg); 
+    }
+    &:hover &__side--back { 
+        // Rotate on y-axis half a full rotation; 180deg.
+        transform: rotateY(0); 
+    }
+    // Card front styling.
+    &__picture {
+        // Background image 'blend mode' property describes how background images should blend.
+        // Other modes are shown in the inspector for additional options. 
+        background-blend-mode: color-burn; // Only works for FF, Chrome, and Safari currently. 
+        background-size: cover;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // Does not work on IE or Edge.
+        height: 23rem;
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), 
+                url(../img/nat-5.jpg);
+        }
+        &--2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), 
+                url(../img/nat-6.jpg);
+        }
+        &--3 {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), 
+                url(../img/nat-7.jpg);
+        }
+    }
+    &__heading {
+        color: $color-white;
+        font-size: 2.8rem;
+        font-weight: 300;
+        position: absolute;
+        right: 2rem;
+        text-align: right;
+        text-transform: uppercase;
+        top: 12rem;
+        width: 75%;
+    }
+    &__heading-span {
+        -webkit-box-decoration-break: clone;
+        // Treats the element as two different ones. Creates the break in the text.
+        box-decoration-break: clone; // Does not work for Chrome, so use -webkit.
+        padding: 1rem 1.5rem;
+        &--1 {
+            background-image: linear-gradient(to right bottom, 
+                rgba($color-secondary-light, .85), 
+                rgba($color-secondary-dark, .85));
+        }
+        &--2 {
+            background-image: linear-gradient(to right bottom, 
+                rgba($color-primary-light, .85), 
+                rgba($color-primary-dark, .85));
+        }
+        &--3 {
+            background-image: linear-gradient(to right bottom, 
+                rgba($color-tertiary-light, .85), 
+                rgba($color-tertiary-dark, .85));
+        }
+    }
+    &__details {
+        padding: 3rem;
+        ul {
+            list-style: none;
+            margin: 0 auto; // Centers the ul. 
+            width: 80%;
+            li {
+                font-size: 1.5rem;
+                padding: 1rem;
+                text-align: center;
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-light-grey2;
+                }
+            }
+        }
+    }
+}
