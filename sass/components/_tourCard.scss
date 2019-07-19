@@ -41,7 +41,7 @@
         // Rotate on y-axis half a full rotation; 180deg.
         transform: rotateY(0); 
     }
-    // Card front styling.
+    // Card front styles.
     &__picture {
         // Background image 'blend mode' property describes how background images should blend.
         // Other modes are shown in the inspector for additional options. 
@@ -110,5 +110,27 @@
                 }
             }
         }
+    }
+    // Card back styles.
+    &__call-to-action {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%; // To give the box some width to accommodate the button and stop line-break.
+    }
+    &__price {
+        color: $color-white;
+        margin-bottom: 8rem;
+        text-align: center;
+    }
+    &__price--text {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+    &__price--value {
+        font-size: 6rem;
+        font-weight: 100;
     }
 }
