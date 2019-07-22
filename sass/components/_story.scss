@@ -1,0 +1,56 @@
+.story {
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    font-size: $default-font;
+    margin: 0 auto;
+    padding: 6rem;
+    padding-left: 9rem;
+    transform: skewX(-12deg);
+    width: 75%;
+    &__img-shape {
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); // To make the image round.
+        float: left; // Required to use shape-outside. 
+        height: 15rem; // Required to use shape-outside. 
+        // Defines the shape of the element; polygon, circle, etc.
+        -webkit-shape-outside: circle(50% at 50% 50%); // Does not work outside of Chrome without this.
+        overflow: hidden;
+        position: relative;
+        shape-outside: circle(50% at 50% 50% ); // 1st val: radius (50% - half height/width).
+        transform: translateX(-3rem) skewX(12deg); // USE THIS TRANSLATEX INSTEAD OF PADDING/MARGIN FOR CIRCLE! Unskew, also.
+        width: 15rem; // Required to use shape-outside.
+    }
+    &__img {
+        backface-visibility: hidden;
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4); // Centers the images in the circle boxes.
+        transition: all .5s;
+    }
+    &__text {
+        transform: skewX(12deg); // Unskew paragraph text. 
+    }
+    &__img-caption {
+        backface-visibility: hidden; // Hides glitches with animations that make the story name shake.
+        color: $color-white;
+        font-size: 1.7rem;
+        left: 50%;
+        opacity: 0;
+        position: absolute; // Requires position: relative to be in parent, .story__img-shape. 
+        text-align: center;
+        text-transform: uppercase;
+        top: 50%;
+        transform: translate(-50%, 50%); // Radius/circle dimensions. 
+        transition: all .5s;
+    }
+    &:hover &__img-caption {
+        opacity: 1;
+        transform: translate(-50%, -50%); // Radius/circle dimensions.
+    }
+    &:hover &__img {
+        backface-visibility: hidden;
+        transform: translateX(-4rem) scale(1);
+        // Filters
+        filter: blur(3px) brightness(80%);
+    }
+}

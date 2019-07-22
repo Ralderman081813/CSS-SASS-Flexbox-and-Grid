@@ -7,10 +7,12 @@
 @import "base/animations";
 @import "base/typography";
 @import "base/utilities";
-/* Import component .scss files */ 
+/* Import component .scss files */
+@import "components/bg-video";
 @import "components/button";
 @import "components/composition";
 @import "components/feature-box";
+@import "components/story";
 @import "components/tourCard";
 /* Import layout .scss files */ 
 @import "layout/header";
