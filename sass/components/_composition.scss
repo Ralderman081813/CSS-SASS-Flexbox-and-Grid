@@ -1,7 +1,7 @@
 .composition {
     position: relative;  // Required for position: absolute; below.
     &__img {
-        border-radius: 2px; 
+        border-radius: $border-radius-2px; 
         box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
         // Positioned in reference to the first parent encountered. Effects all images.
         outline-offset: 2rem; // Used with outline from &:hover below. Gives space (outline) between the outlin and element.

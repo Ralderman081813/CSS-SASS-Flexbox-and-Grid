@@ -1,18 +1,21 @@
 // Greens
-$color-primary-light: #7ed56f;
-$color-primary: #55c57a;
-$color-primary-dark: #28b485;
+$color-primary-light: #7d6;
+$color-primary: #5c7;
+$color-primary-dark: #2b8;
 // Oranges
-$color-secondary-light: #ffb900;
-$color-secondary-dark: #ff7730;
+$color-secondary-light: #fb0;
+$color-secondary-dark: #f73;
+// Reds
+$color-danger-red: #f00;
 // Blues
-$color-tertiary-light: #2998ff;
-$color-tertiary-dark: #5643fa;
+$color-tertiary-light: #29f;
+$color-tertiary-dark: #54f;
 // Greys
-$color-grey: #777;
-$color-light-grey1: #f7f7f7;
-$color-light-grey2: #eee;
-$color-dark-grey: #141313;
+$color-grey-1: #777;
+$color-grey-2: #999;
+$color-light-grey-1: #fff;
+$color-light-grey-2: #eee;
+$color-dark-grey: #111;
 // Black and white
 $color-white: #fff;
 $color-black: #000;
@@ -21,4 +24,8 @@ $grid-width: 114rem;
 $gutter-vert: 8rem;
 $gutter-horiz: 6rem;
 // Font size (Default is 1.6rem)
-$default-font: 1.6rem
+$default-font: 1.6rem;
+// Border-radius sizes
+$border-radius-5-rem: 5rem;
+$border-radius-3px: 3px;
+$border-radius-2px: 2px;

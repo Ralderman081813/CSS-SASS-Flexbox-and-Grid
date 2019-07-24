@@ -6,8 +6,8 @@
     position: relative;
     &__side {
         backface-visibility: hidden; // Hides the --back of the card prior to rotation.
-        background-color: $color-grey;
-        border-radius: 3px;
+        background-color: $color-grey-1;
+        border-radius: $border-radius-3px;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
         font-size: 2rem;
         height: 52rem;
@@ -106,7 +106,7 @@
                 padding: 1rem;
                 text-align: center;
                 &:not(:last-child) {
-                    border-bottom: 1px solid $color-light-grey2;
+                    border-bottom: 1px solid $color-light-grey-2;
                 }
             }
         }
