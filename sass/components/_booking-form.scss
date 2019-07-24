@@ -1,0 +1,49 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+    &__input {
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent; // Stops the visual 3px jump when focusing an input field.
+        border-radius: 2px;
+        color: inherit;
+        display: block;
+        font-family: inherit; // Makes the font inherit from the body.
+        font-size: 1.5rem; 
+        padding: 1.5rem 2rem;
+        transition: all .3s;
+        width: 90%;
+        &:focus {
+            outline: none; // Removes the default blue outline around the input fields. 
+            border-bottom: 3px solid $color-primary;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            // Pseudoclass for input field "required" state.
+            &:invalid {
+                border-bottom: 3px solid $color-danger-red;
+            }
+        }
+        // Currently only works on Safari and Chrome. 
+        // Double :: represents things that are actually on the webpage. 
+        // Single : represent states, such as focus, hover, or active. 
+        &::-webkit-input-placeholder {
+            color: $color-grey-2;
+        }       
+    }
+    // Hides the label until text is typed into the input field. 
+    // ~ is the general sibling selector.
+    // + is the adjacent sibling selector. 
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        transform: translateY(-4rem);
+        visibility: hidden; // Used with opacity because can't animate visibility
+    } 
+    &__label {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        transition: all .3s;
+    }
+}

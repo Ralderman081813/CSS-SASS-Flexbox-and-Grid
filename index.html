@@ -300,7 +300,44 @@
                 </div>
             </section>
             <section class="booking-section">
-                
+                <div class="row">
+                    <div class="book">
+                        <div class="book__form">
+                            <div class="utlty-cntr-txt utility-margin-bottom-md">
+                                <h2 class="secondary-header">Start Booking Now!</h2>
+                            </div>
+                            <form action="#" class="form">
+                                <div class="form__group">
+                                    <input type="text" class="form__input" id="name" placeholder="Full Name" required>
+                                    <label for="name" class="form__label">Full Name</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="email" class="form__input" id="email" placeholder="Email Address" required>
+                                    <label for="email" class="form__label">Email Address</label>
+                                </div>
+                                <div class="form__group">
+                                    <div class="form__radio-btn">
+                                        <input type="radio" id="smallTours" class="form__radio-input" name="Tour Size">
+                                        <label for="smallTours" class="form__radio-label">
+                                            <!-- We need to build our own radio buttons since we can not style them otherwise. -->
+                                            Small Tour Group
+                                        </label>
+                                    </div>
+                                    <!-- The name="Tour Size" is the same for each radio so that they link together
+                                    to prevent from both being selected at once. This groups radio options together
+                                    for this purpose. -->
+                                    <div class="form__radio-btn">
+                                        <input type="radio" id="largeTours" class="form__radio-input" name="Tour Size">
+                                        <label for="largeTours" class="form__radio-label">
+                                            <!-- We need to build our own radio buttons since we can not style them otherwise. -->
+                                            Large Tour Group
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
     </body>

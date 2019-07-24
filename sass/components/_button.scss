@@ -1,7 +1,7 @@
 .btn {
     &:link,
     &:visited {
-        border-radius: 5rem;
+        border-radius: $border-radius-5-rem;
         display: inline-block; /* Should use to give an element some height and/or padding. */
         font-size: $default-font;
         padding: 1.5rem 4rem;
@@ -26,7 +26,7 @@
     Here, we add an element that looks like the button, but bigger, then hides - creates the effect. 
     Treated as a child of the button. Animation on original state. */
     &::after {
-        border-radius: 5rem;
+        border-radius: $border-radius-5-rem;
         content: ""; /* REQUIRED OR IT WILL NOT APPEAR */
         display: inline-block;
         height: 100%;
@@ -39,7 +39,7 @@
     }
     &--white {
         background-color: $color-white;
-        color: $color-grey;
+        color: $color-grey-1;
         &::after {
             background-color: $color-white;
         }
