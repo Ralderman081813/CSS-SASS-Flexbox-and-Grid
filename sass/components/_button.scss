@@ -1,4 +1,5 @@
 .btn {
+    &,
     &:link,
     &:visited {
         border-radius: $border-radius-5-rem;
@@ -9,6 +10,9 @@
         text-decoration: none;
         text-transform: uppercase;
         transition: all .2s; /* Must be on the inital state, here, to use for :hover/:active */
+        // Changes for the <button> element. 
+        border: none;
+        cursor: pointer;
     }
     &:hover {
         box-shadow: 0 1rem 2rem rgba($color-black, .2);
@@ -18,8 +22,10 @@
             opacity: 0;
         }
     }
-    &:active {
+    &:active,
+    &:focus {
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        outline: none;
         transform: translateY(-1px);
     }
     /* Serves as virtual element after (::after) selected element (.btn) that can be styled 

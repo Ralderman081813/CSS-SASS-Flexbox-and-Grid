@@ -315,24 +315,32 @@
                                     <input type="email" class="form__input" id="email" placeholder="Email Address" required>
                                     <label for="email" class="form__label">Email Address</label>
                                 </div>
-                                <div class="form__group">
-                                    <div class="form__radio-btn">
+                                <div class="form__group utility-margin-bottom-md">
+                                    <div class="form__radio-group">
+                                        <!-- Will hide the input element and show our custom (span) radio button instead. -->
                                         <input type="radio" id="smallTours" class="form__radio-input" name="Tour Size">
                                         <label for="smallTours" class="form__radio-label">
                                             <!-- We need to build our own radio buttons since we can not style them otherwise. -->
+                                            <span class="form__radio-button"></span>
                                             Small Tour Group
                                         </label>
                                     </div>
                                     <!-- The name="Tour Size" is the same for each radio so that they link together
                                     to prevent from both being selected at once. This groups radio options together
                                     for this purpose. -->
-                                    <div class="form__radio-btn">
+                                    <div class="form__radio-group">
+                                        <!-- Will hide the input element and show our custom (span) radio button instead. -->
                                         <input type="radio" id="largeTours" class="form__radio-input" name="Tour Size">
                                         <label for="largeTours" class="form__radio-label">
                                             <!-- We need to build our own radio buttons since we can not style them otherwise. -->
+                                            <span class="form__radio-button"></span>
                                             Large Tour Group
                                         </label>
                                     </div>
+                                </div>
+                                <div class="form__group">
+                                    <!-- Form understands that when there is a button, it serves as submit, despite text. -->
+                                    <button class="btn btn--green">Next Step &rarr;</button>
                                 </div>
                             </form>
                         </div>
@@ -340,5 +348,41 @@
                 </div>
             </section>
         </main>
+        <footer class="footer">
+            <div class="footer__logo-box">
+                <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+            </div>
+            <div class="row">
+                <div class="col-1-of-2">
+                    <div class="footer__navigation">
+                        <ul class="footer__list">
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">Company</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">Contact Us</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">Careers</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">Privacy Policy</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="#" class="footer__link">Terms & Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-1-of-2">
+                    <p class="footer__copyright">
+                        Built by <a href="https://www.linkedin.com/in/reissa-alderman/" class="footer__link" target="_blank">Reissa Alderman</a> 
+                        for the Udemy course on <a href="https://www.udemy.com/advanced-css-and-sass" target="_blank">Advanced CSS and SASS</a>.
+                        Copyright &copy; by Jonas Schmedtmann. 100% permission to use this webpage for both personal and commercial use, but not
+                        to claim it as your own design. Credit to the original author is highly appreciated. 
+                    </p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

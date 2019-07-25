@@ -46,4 +46,46 @@
         margin-top: .7rem;
         transition: all .3s;
     }
+    &__radio-group {
+        display: inline-block;
+        width: 45%;
+    }
+    &__radio-input {
+        display: none;  // Hides the default radio buttons in lieu of the custom ones.  
+    }
+    &__radio-label {
+        cursor: pointer;
+        font-size: $default-font;
+        padding-left: 4rem;
+        position: relative; // Needed for child __radio-button to use position: absolute; Must be specified (absolute/relative).
+    }
+    &__radio-button {
+        border: 5px solid $color-primary;
+        border-radius: 50%; // Makes the border round. 
+        display: inline-block; // Makes it round, as well. 
+        height: 3rem; 
+        left: 0;
+        position: absolute; // Puts it in the exact position we want it to be; can also be absolute when using absolute in child. 
+        top: -.4rem;
+        width: 3rem;
+        // Creates new element, essentially; the 'after' pseudoclass. 
+        &::after {
+            background-color: $color-primary;
+            border-radius: 50%;
+            content: ""; // Always required when using the after pseudoclass. 
+            display: block;
+            height: 1.3rem;
+            left: 50%;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity .2s; // Targets only the opacity transition below. 
+            width: 1.3rem;
+        }
+    }
+    // When the label/radio is checked, select the sibling's child. Same logic for this applies to checkboxes. 
+    &__radio-input:checked ~ &__radio-label &__radio-button::after  { // Targets the sibling child element of the checked radio button. 
+        opacity: 1; // Targeted by transition above. 
+    }
 }

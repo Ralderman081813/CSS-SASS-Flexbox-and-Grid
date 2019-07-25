@@ -68,31 +68,31 @@ body {
     margin-bottom: 3rem; }
 
 .utlty-cntr-txt {
-  text-align: center; }
+  text-align: center !important; }
 
 .utility-margin-top-sm {
-  margin-top: 1.5rem; }
+  margin-top: 1.5rem !important; }
 
 .utility-margin-top-md {
-  margin-top: 4rem; }
+  margin-top: 4rem !important; }
 
 .utility-margin-top-lg {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
 
 .utility-margin-top-xl {
-  margin-top: 10rem; }
+  margin-top: 10rem !important; }
 
 .utility-margin-bottom-sm {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .utility-margin-bottom-md {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
 
 .utility-margin-bottom-lg {
-  margin-bottom: 8rem; }
+  margin-bottom: 8rem !important; }
 
 .utility-margin-bottom-xl {
-  margin-bottom: 10rem; }
+  margin-bottom: 10rem !important; }
 
 /* Import component .scss files */
 .bg-video {
@@ -146,11 +146,50 @@ body {
   margin-top: .7rem;
   transition: all .3s; }
 
+.form__radio-group {
+  display: inline-block;
+  width: 45%; }
+
+.form__radio-input {
+  display: none; }
+
+.form__radio-label {
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding-left: 4rem;
+  position: relative; }
+
+.form__radio-button {
+  border: 5px solid #5c7;
+  border-radius: 50%;
+  display: inline-block;
+  height: 3rem;
+  left: 0;
+  position: absolute;
+  top: -.4rem;
+  width: 3rem; }
+  .form__radio-button::after {
+    background-color: #5c7;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 1.3rem;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity .2s;
+    width: 1.3rem; }
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1; }
+
 .btn {
   /* Serves as virtual element after (::after) selected element (.btn) that can be styled 
     Here, we add an element that looks like the button, but bigger, then hides - creates the effect. 
     Treated as a child of the button. Animation on original state. */ }
-  .btn:link, .btn:visited {
+  .btn, .btn:link, .btn:visited {
     border-radius: 5rem;
     display: inline-block;
     /* Should use to give an element some height and/or padding. */
@@ -161,15 +200,18 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     transition: all .2s;
-    /* Must be on the inital state, here, to use for :hover/:active */ }
+    /* Must be on the inital state, here, to use for :hover/:active */
+    border: none;
+    cursor: pointer; }
   .btn:hover {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     transform: translateY(-3px); }
     .btn:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0; }
-  .btn:active {
+  .btn:active, .btn:focus {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    outline: none;
     transform: translateY(-1px); }
   .btn::after {
     border-radius: 5rem;
@@ -405,6 +447,36 @@ body {
     font-weight: 100; }
 
 /* Import layout .scss files */
+.row {
+  margin: 0 auto;
+  max-width: 114rem;
+  /* Attribute selector: Use square brackets [ ]. The ^ denotes 'starts with', * denotes 
+    'contains', $ denotes 'ends with'. Selects all columns at once without needing a special 
+    class/id assigned to them. */ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row .col-1-of-2 {
+    /* Performs mathematical operations; can mix units.*/
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+
 /******************** Header ********************/
 .header {
   background-image: linear-gradient(to right bottom, rgba(119, 221, 102, 0.8), rgba(34, 187, 136, 0.8)), url(../img/hero.jpg);
@@ -475,36 +547,6 @@ body {
   font-size: 1.6rem;
   font-weight: 700;
   text-transform: uppercase; }
-
-.row {
-  margin: 0 auto;
-  max-width: 114rem;
-  /* Attribute selector: Use square brackets [ ]. The ^ denotes 'starts with', * denotes 
-    'contains', $ denotes 'ends with'. Selects all columns at once without needing a special 
-    class/id assigned to them. */ }
-  .row:not(:last-child) {
-    margin-bottom: 8rem; }
-  .row .col-1-of-2 {
-    /* Performs mathematical operations; can mix units.*/
-    width: calc((100% - 6rem) / 2); }
-  .row .col-1-of-3 {
-    width: calc((100% - 2 * 6rem) / 3); }
-  .row .col-2-of-3 {
-    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
-  .row .col-1-of-4 {
-    width: calc((100% - 3 * 6rem) / 4); }
-  .row .col-2-of-4 {
-    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
-  .row .col-3-of-4 {
-    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
-  .row::after {
-    content: "";
-    display: table;
-    clear: both; }
-  .row [class^="col-"] {
-    float: left; }
-    .row [class^="col-"]:not(:last-child) {
-      margin-right: 6rem; }
 
 /* Import pages .scss files */
 .about-section {
