@@ -113,11 +113,8 @@
     }
     // Card back styles.
     &__call-to-action {
-        left: 50%;
-        position: absolute;
+        @include absoluteCenter;
         text-align: center;
-        top: 50%;
-        transform: translate(-50%, -50%);
         width: 90%; // To give the box some width to accommodate the button and stop line-break.
     }
     &__price {

@@ -15,9 +15,11 @@
         background-color: $color-white;
         border-radius: 50%;
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        cursor: pointer;
         height: 7rem;
         position: fixed;
         right: 6rem;
+        text-align: center;
         top: 6rem;
         width: 7rem;
         z-index: 2000;
@@ -50,12 +52,9 @@
         z-index: 1500;
     }
     &__list {
-        left: 50%;
+        @include absoluteCenter;
         list-style: none;
-        position: absolute;
         text-align: center;
-        top: 50%;
-        transform: translate(-50%, -50%);
         width: 100%;
     }
     &__item {
@@ -85,5 +84,50 @@
             color: $color-primary;
             transform: translateX(1rem);
         }
+    }
+    // For the icon in the navigation menu. 
+    &__icon {
+        margin-top: 3.5rem;
+        position: relative; // Parent element of pseudo-element where position is set to absolute.
+        &,
+        &::before,
+        &::after {
+            background-color: $color-dark-grey-1;
+            display: inline-block; // Needs to be set.
+            height: 2px;
+            width: 3rem;
+        }
+        &::before,
+        &::after {
+            content: ""; // Needs to be set in order for the before/after pseudo-elements to display.
+            left: 0;
+            position: absolute;
+            transition: all .3s; // Transition declaration needed for the navigation button hover effect below.
+        }
+        &::before {
+            top: -.8rem; // Spacing between the spans/lines in the navigation button. 
+        }
+        &::after {
+            top: .8rem;  // Spacing between the spans/lines in the navigation button. 
+        }
+    }
+    // Handles the hover effect on the navigation button.
+    &__button:hover &__icon::before { // Top 'hamburger' line.
+        top: -1.2rem;
+    }
+    &__button:hover &__icon::after { // Bottom 'hamburger' line.
+        top: 1.2rem;
+    }
+    // Handles the click (checked) effect on the navigation button to create the 'X'.
+    &__checkbox:checked + &__button &__icon { // The middle 'hamburger' line. 
+        background-color: transparent;
+    }
+    &__checkbox:checked + &__button &__icon::before { // The top 'hamburger' line. 
+        top: 0;
+        transform: rotate(135deg); // 180deg - 45deg to make a better effect. 
+    }
+    &__checkbox:checked + &__button &__icon::after { // The bottom 'hamburger' line. 
+        top: 0;
+        transform: rotate(-135deg); // 180deg - 45deg to make a better effect. 
     }
 }

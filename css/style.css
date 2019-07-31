@@ -169,21 +169,50 @@ body {
   top: -.4rem;
   width: 3rem; }
   .form__radio-button::after {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-color: #5c7;
     border-radius: 50%;
     content: "";
     display: block;
     height: 1.3rem;
-    left: 50%;
     opacity: 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
     transition: opacity .2s;
     width: 1.3rem; }
 
 .form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
   opacity: 1; }
+
+.popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999; }
+  .popup__content {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1 2rem 4rem rgba(0, 0, 0, 0.2);
+    display: table;
+    width: 75%; }
+  .popup__left {
+    display: table-cell;
+    width: 33.333333%; }
+  .popup__right {
+    display: table-cell;
+    width: 66.666666%;
+    vertical-align: middle; }
+  .popup__img {
+    display: block;
+    width: 100%; }
 
 .btn {
   /* Serves as virtual element after (::after) selected element (.btn) that can be styled 
@@ -431,9 +460,9 @@ body {
   .card__call-to-action {
     left: 50%;
     position: absolute;
-    text-align: center;
     top: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
     width: 90%; }
   .card__price {
     color: #fff;
@@ -607,9 +636,11 @@ body {
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   height: 7rem;
   position: fixed;
   right: 6rem;
+  text-align: center;
   top: 6rem;
   width: 7rem;
   z-index: 2000; }
@@ -637,11 +668,11 @@ body {
 
 .nav__list {
   left: 50%;
-  list-style: none;
   position: absolute;
-  text-align: center;
   top: 50%;
   transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
   width: 100%; }
 
 .nav__item {
@@ -666,6 +697,41 @@ body {
   background-position: 100%;
   color: #5c7;
   transform: translateX(1rem); }
+
+.nav__icon {
+  margin-top: 3.5rem;
+  position: relative; }
+  .nav__icon, .nav__icon::before, .nav__icon::after {
+    background-color: #333;
+    display: inline-block;
+    height: 2px;
+    width: 3rem; }
+  .nav__icon::before, .nav__icon::after {
+    content: "";
+    left: 0;
+    position: absolute;
+    transition: all .3s; }
+  .nav__icon::before {
+    top: -.8rem; }
+  .nav__icon::after {
+    top: .8rem; }
+
+.nav__button:hover .nav__icon::before {
+  top: -1.2rem; }
+
+.nav__button:hover .nav__icon::after {
+  top: 1.2rem; }
+
+.nav__checkbox:checked + .nav__button .nav__icon {
+  background-color: transparent; }
+
+.nav__checkbox:checked + .nav__button .nav__icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.nav__checkbox:checked + .nav__button .nav__icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
 
 /* Import pages .scss files */
 .about-section {
