@@ -2,8 +2,11 @@
     background-color: rgba($color-black, .8);
     height: 100vh;
     left: 0;
+    opacity: 0;
     position: fixed; // Doesn't move as page is scrolled.
     top: 0;
+    transition: all .3s; 
+    visibility: hidden;
     width: 100%;
     z-index: 9999;
     &__content {
@@ -12,15 +15,20 @@
         border-radius: 4px;
         box-shadow: 1 2rem 4rem rgba($color-black, .2); 
         display: table; // Required due to the use of table-cell below; parent "table" element.
+        opacity: 0; // Invisible until opened in a later declaration block. 
+        overflow: hidden; // Removes the overlap of the images from the border-radius effect. 
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .2s; // .2s is a delay that was added. 
         width: 75%;
     }
     &__left {
-        display: table-cell;
+        display: table-cell; // Makes the left side of the content box a 'table cell', effectively.
         width: 33.333333%;
     }
     &__right {
-        display: table-cell;
-        width: 66.666666%;
+        display: table-cell; // Makes the right side of the content box a 'table cell', effectively. 
+        padding: 3rem 5rem;
+        width: 66.6666667%;
         vertical-align: middle; // Used when using table-cell.
     }
     &__img {
@@ -28,6 +36,59 @@
         width: 100%;
     }
     &__text {
-
+        // Firefox
+        -moz-column-count: 2; // Gives two columns for the content to occupy. Can be increased as desired for more columns.
+        -moz-column-gap: 4rem; // Creates the gap between the columns that were created by the column-count declaration. 
+        -moz-column-rule: 1px solid $color-light-grey-2; // Adds the grey line between the columns.
+        // Edge
+        -ms-column-count: 2; // Gives two columns for the content to occupy. Can be increased as desired for more columns.
+        -ms-column-gap: 4rem; // Creates the gap between the columns that were created by the column-count declaration. 
+        -ms-column-rule: 1px solid $color-light-grey-2; // Adds the grey line between the columns.
+        // Chrome
+        -webkit-column-count: 2; // Gives two columns for the content to occupy. Can be increased as desired for more columns.
+        -webkit-column-gap: 4rem; // Creates the gap between the columns that were created by the column-count declaration. 
+        -webkit-column-rule: 1px solid $color-light-grey-2; // Adds the grey line between the columns.
+        column-count: 2; // Gives two columns for the content to occupy. Can be increased as desired for more columns.
+        column-gap: 4rem; // Creates the gap between the columns that were created by the column-count declaration. 
+        column-rule: 1px solid $color-light-grey-2; // Adds the grey line between the columns. 
+        font-size: 1.4rem;
+        // Firefox
+        -moz-hyphens: auto;
+        // Edge
+        -ms-hyphens: auto;
+        // Chrome
+        -webkit-hyphens: auto;
+        hyphens: auto; // Adds the hyphens for words that span more than one line. *NOT WORKING - INVESTIGATE*
+        margin-bottom: 4rem;
+    }
+    // *************************************** CLOSE ICON/BUTTON ON POPUP - OPEN STATE OF POPUP *************************************** //
+    // :target applies the declarations to the element when it becomes targeted. 
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+    // Popup close 
+    &__close {
+        &:link, 
+        &:visited {
+            color: $color-grey-1;
+            display: inline-block;
+            font-size: 3rem;
+            line-height: 1;
+            position: absolute; // Parent = popup__right, and does not need to declare position for parent. 
+            right: 2.5rem;
+            text-decoration: none;
+            top: 2.5rem;
+            transition: all .2s;
+        }
+        &:hover, 
+        &:active {
+            color: $color-primary;
+        }
+    }
+    // Style popup content the moment that the popup opens. When the popup becomes the target, we want to style __content.
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }
