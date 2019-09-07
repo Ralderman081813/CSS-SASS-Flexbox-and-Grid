@@ -26,6 +26,9 @@ html {
     } 
     Option 2 in _mixins.scss:
     ___________________________ */
+    @include respond(xlarge-desktop) {
+        font-size: 75%; // @content
+    }
     @include respond(tablet-landscape) { // width < 900?
         font-size: 56.25%; // @content
         // We want 1rem = 9px; so 9/16 = 56.25%.   
@@ -33,9 +36,6 @@ html {
     @include respond(tablet-portrait) { // width < 600?
         font-size: 50%; // @content
         // We want 1rem = 8px; so 8/16 = 50%.
-    }
-    @include respond(xlarge-desktop) {
-        font-size: 75%; // @content
     }
 }
 body {

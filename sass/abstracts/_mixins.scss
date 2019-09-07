@@ -51,8 +51,8 @@ $breakpoint argument choices:
 - large-desktop
 */
 @mixin respond($breakpoint) {
-    @if $breakpoint == tablet-portrait {
-        @media (max-width: 56.25em) { // 900px
+    @if $breakpoint == xlarge-desktop {
+        @media (max-width: 112.5em) { // 1800px
             @content
         };
     }
@@ -61,8 +61,8 @@ $breakpoint argument choices:
             @content
         };
     }
-    @if $breakpoint == xlarge-desktop {
-        @media (max-width: 112.5em) { // 1800px
+    @if $breakpoint == tablet-portrait {
+        @media (max-width: 56.25em) { // 900px
             @content
         };
     }
