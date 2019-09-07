@@ -1,6 +1,45 @@
 /* 10px equals 1rem*/
 /* 1em equals 14px */
 /* Import abstract .scss files */
+/* Media query mixins. 
+------------------------
+0-600 = phone
+600-900 = tablet (portrait)
+900-1200 = tabet (landscape)
+1200-1800 = default style application; no media query needed. 
+1800+ = large/extra large viewports (big desktop screens) 
+------------------------
+Option 1 in _base.scss:
+___________________________________
+@mixin respond-phone {
+    @media (max-width: 600px) {
+        @content
+    };
+}
+@mixin respond-tablet-p {
+    @media (max-width: 900px) {
+        @content
+    };
+}
+@mixin respond-tablet-l {
+    @media (max-width: 1200px) {
+        @content
+    };
+}
+@mixin respond-xl-desktop {
+    @media (max-width: 1800px) {
+        @content
+    };
+} 
+
+Option 2 in _base.scss:
+____________________________________
+$breakpoint argument choices: 
+- phone
+- tablet-portrait
+- tablet-landscape
+- large-desktop
+*/
 /* Import base .scss files */
 /********************** Reset HTML - Sort of boilerplate ********************/
 *,
@@ -11,7 +50,34 @@
   padding: 0; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  /* For media query mixins.
+    ---------------------------
+    Option 1 in _mixins.scss:
+    ___________________________
+    @include respond-phone {
+        font-size: 50%;
+    }
+    @include respond-tablet-p {
+        font-size: 60%;
+    }
+    @include respond-tablet-l {
+        font-size: 50%;
+    }
+    @include respond-xl-desktop {
+        font-size: 80%;
+    } 
+    Option 2 in _mixins.scss:
+    ___________________________ */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box; }
